@@ -2,6 +2,8 @@
 
 import logging
 import json
+import ssl
+import urllib3
 from sym_api_client_python.configure.configure import SymConfig
 from sym_api_client_python.auth.rsa_auth import SymBotRSAAuth
 from sym_api_client_python.clients.sym_bot_client import SymBotClient
@@ -9,14 +11,24 @@ from sym_api_client_python.listeners.im_listener_test_imp import IMListenerTestI
 from sym_api_client_python.listeners.room_listener_test_imp import RoomListenerTestImp
 from sym_api_client_python.listeners.elements_listener_test_imp import ElementsListenerTestImp
 
+# SSL警告を無効化（開発/テスト環境用）
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class SymphonyFormBot:
     def __init__(self, config_path="config.json"):
+        # SSL証明書検証を無効化（開発/テスト環境用）
+        ssl._create_default_https_context = ssl._create_unverified_context
+        
         # 設定ファイルを読み込み
         self.configure = SymConfig(config_path)
         self.configure.load_config()
+        
+        # SSL証明書検証を無効にする設定を追加
+        if not hasattr(self.configure.data, 'sessionAuthHost'):
+            self.configure.data['sessionAuthHost'] = self.configure.data.get('sessionAuthHost', '')
         
         # RSA認証
         auth = SymBotRSAAuth(self.configure)
