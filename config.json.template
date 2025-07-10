@@ -13,5 +13,14 @@
   "botPrivateKeyName": "private-key.pem",
   "target_room_id": "YOUR_TARGET_ROOM_ID_HERE",
   "truststorePath": "",
-  "truststorePassword": ""
+  "truststorePassword": "",
+  "proxyURL": "",
+  "proxyUsername": "",
+  "proxyPassword": "",
+  "podProxyURL": "",
+  "podProxyUsername": "",
+  "podProxyPassword": "",
+  "agentProxyURL": "",
+  "agentProxyUsername": "",
+  "agentProxyPassword": ""
 }
