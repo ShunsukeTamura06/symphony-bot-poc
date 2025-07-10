@@ -1,0 +1,17 @@
+{
+  "sessionAuthHost": "your-pod.symphony.com",
+  "sessionAuthPort": 443,
+  "keyAuthHost": "your-pod.symphony.com",
+  "keyAuthPort": 443,
+  "podHost": "your-pod.symphony.com",
+  "podPort": 443,
+  "agentHost": "your-pod.symphony.com",
+  "agentPort": 443,
+  "authType": "rsa",
+  "botUsername": "your-bot-name",
+  "botPrivateKeyPath": "./rsa/private-key.pem",
+  "botPrivateKeyName": "private-key.pem",
+  "target_room_id": "YOUR_TARGET_ROOM_ID_HERE",
+  "truststorePath": "",
+  "truststorePassword": ""
+}
